@@ -31,6 +31,7 @@ public abstract class Person {
         this.name = name;
     }
 
+
     public void printInfo() {
         System.out.println("Name: " + name + "; Attack: " + atk + "; Health: " + health + "; Defence: " + def + "; Shot: " + shot);
     }
