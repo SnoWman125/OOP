@@ -6,6 +6,12 @@ public abstract class Person {
     protected boolean delivery, magic;
     protected String name;
 
+    protected static int number;
+
+    static {
+        number = 0;
+    }
+
 
     public int getShot() {return shot;}
     public int getAtk() {return atk;}
