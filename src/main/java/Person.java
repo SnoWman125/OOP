@@ -7,9 +7,12 @@ public abstract class Person {
     protected String name;
 
 
-    public int getShot() {
-        return shot;
-    }
+    public int getShot() {return shot;}
+    public int getAtk() {return atk;}
+    public int getDef() {return def;}
+    public int[] getDamage() {return damage;}
+    public float getHealth() {return health;}
+    public float getSpeed() {return speed;}
 
     public int setShot(int shot) {
         if (shot < 0) return -1;
