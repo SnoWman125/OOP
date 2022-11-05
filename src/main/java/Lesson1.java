@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Lesson1 {
 
@@ -9,22 +10,51 @@ public class Lesson1 {
         List<Person> whiteSide = new ArrayList<>();
 
 
-        Archer archer = new Archer();
-        Peasant peasant = new Peasant();
-        Monk monk = new Monk();
-        Rogue rogue = new Rogue();
-        Sniper sniper = new Sniper();
-        Spearman spearman = new Spearman();
-        Warlock warlock = new Warlock();
+        darkSide.add(new Archer());
+        darkSide.add(new Monk());
+        darkSide.add(new Rogue());
+        darkSide.add(new Peasant());
+        Random rnd = new Random();
+        for(int i=0; i < 4; i++){
+            switch (rnd.nextInt(4)){
+                case 0:
+                    darkSide.add(new Archer());
+                case 1:
+                    darkSide.add(new Monk());
+                case 2:
+                    darkSide.add(new Rogue());
+                default:
+                    darkSide.add(new Peasant());
+            }
+        }
+
+        whiteSide.add(new Sniper());
+        whiteSide.add(new Spearman());
+        whiteSide.add(new Warlock());
+        whiteSide.add(new Peasant());
+        for(int i = 0; i < 4; i++){
+            switch (rnd.nextInt(4)){
+                case 0:
+                    whiteSide.add(new Sniper());
+                case 1:
+                    whiteSide.add(new Spearman());
+                case 2:
+                    whiteSide.add(new Warlock());
+                default:
+                    whiteSide.add(new Peasant());
+            }
+        }
+
+        darkSide.forEach(n -> System.out.println(n.printInfo()));
+        System.out.println();
+        whiteSide.forEach(n -> System.out.println(n.printInfo()));
+        System.out.println();
+        darkSide.forEach(n -> System.out.println(n.getHealth()));
 
 
-        archer.printInfo();
-        peasant.printInfo();
-        monk.printInfo();
-        rogue.printInfo();
-        sniper.printInfo();
-        spearman.printInfo();
-        warlock.printInfo();
+
+
+
 
     }
 }
