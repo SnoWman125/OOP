@@ -1,42 +1,44 @@
-
-public abstract class Person {
-    protected int atk, def, shot;
-    protected int[] damage;
-    protected float health, speed;
-    protected boolean delivery, magic;
+public abstract class Person implements Actions {
+    protected int atk, def, shot, health, speed;
+    private int[] damage;
     protected String name;
+    protected static int number;
 
+    protected boolean delivery, magic;
 
-    public int getShot() {return shot;}
-    public int getAtk() {return atk;}
-    public int getDef() {return def;}
-    public int[] getDamage() {return damage;}
-    public float getHealth() {return health;}
-    public float getSpeed() {return speed;}
-
-    public int setShot(int shot) {
-        if (shot < 0) return -1;
-        if (shot > 36) return -2;
-        this.shot = shot;
-        return shot;
+    static {
+        number = 0;
     }
 
-    public Person(int atk, int def, int shot, int[] damage, float health, float speed, boolean delivery, boolean magic,
-                  String name){
+    public Person(String name, int health, int atk, int def, int shot, int[] damage, int speed){
+        this.name = name;
+        this.health = health;
         this.atk = atk;
         this.shot = shot;
         this.def = def;
         this.damage = damage;
-        this.health = health;
         this.speed = speed;
-        this.delivery = delivery;
-        this.magic = magic;
-        this.name = name;
     }
 
 
-    public void printInfo() {
-        System.out.println("Name: " + name + "; Attack: " + atk + "; Health: " + health + "; Defence: " + def + "; Shot: " + shot);
+    public String getName() {return name;}
+    public int getAtk() {return atk;}
+    public int getDef() {return def;}
+    public int getShot() {return shot;}
+
+    public int getSpeed() {return speed;}
+
+
+
+    @Override
+    public String printInfo() {
+        return  String.format("%s#%d %s:: Health: %d Attack: %d Defence: %d Shot: %d Damage: %d -%d Speed: %d",
+                this.getClass().getSimpleName(), ++Person.number, name, health, atk, def, shot, damage[0], damage[1], speed);
+
+    }
+    @Override
+    public String getHealth() {
+        return String.format("%s#%d %s:: Health: %d", this.getClass().getSimpleName(), ++Person.number, name, health);
     }
 
 }
